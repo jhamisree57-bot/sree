@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0b0b">
+    <meta name="description" content="Personal portfolio of Jhami Sreesanth from Gumuda, Odisha.">
+    <title>Jhami Sreesanth | my website</title>
+
+    <link rel="icon" type="image/png" href="sree.png">
+    <link rel="shortcut icon" href="sree.png">
+    <link rel="apple-touch-icon" href="sree.png">
+
+    <style>
+        :root {
+            --bg: #0b0b0b;
+            --surface: #131313;
+            --card: #181818;
+            --yellow: #ff2e3b;
+            --gold: #ff6a5e;
+            --text: #fff1f0;
+            --muted: #b8a1a1;
+            --line: rgba(255, 46, 59, 0.2);
+            --radius: 20px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+
+        body {
+            font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+            background-color: var(--bg);
+            background-image:
+                radial-gradient(circle at 85% -5%, rgba(255, 46, 59, 0.16), transparent 35%),
+                radial-gradient(circle at 0% 60%, rgba(255, 106, 94, 0.08), transparent 35%),
+                linear-gradient(rgba(255, 46, 59, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 46, 59, 0.04) 1px, transparent 1px);
+            background-size: auto, auto, 46px 46px, 46px 46px;
+            color: var(--text);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        .wrap { width: min(1120px, 92%); margin: auto; }
+
+        header {
+            position: sticky;
+            top: 12px;
+            z-index: 20;
+            margin-top: 12px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            flex-wrap: wrap;
+            padding: 10px 14px 10px 18px;
+            background: rgba(19, 19, 19, 0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        .logo span { color: var(--yellow); }
+
+        .menu { display: flex; flex-wrap: wrap; gap: 4px; }
+
+        .menu a {
+            color: var(--muted);
+            font-size: 0.86rem;
+            padding: 7px 13px;
+            border-radius: 999px;
+            transition: background 0.25s, color 0.25s;
+        }
+
+        .menu a:hover { background: var(--yellow); color: #0b0b0b; }
+
+        .landing {
+            min-height: 640px;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            align-items: center;
+            gap: 60px;
+            padding-top: 70px;
+            padding-bottom: 60px;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 7px 15px;
+            border: 1px solid var(--line);
+            background: rgba(255, 46, 59, 0.08);
+            border-radius: 999px;
+            color: var(--yellow);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+        }
+
+        .pill i {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--yellow);
+            box-shadow: 0 0 0 0 rgba(255, 46, 59, 0.7);
+            animation: pulse 2s infinite;
+        }
+
+        h1 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(3rem, 7vw, 5.6rem);
+            line-height: 1.02;
+            margin: 22px 0 16px;
+        }
+
+        h1 .mark {
+            color: #0b0b0b;
+            background: var(--yellow);
+            padding: 0 14px;
+            border-radius: 14px;
+            display: inline-block;
+            transform: rotate(-2deg);
+        }
+
+        .role { color: var(--gold); font-size: 1.15rem; font-weight: 700; margin-bottom: 14px; }
+
+        .bio, .lead { color: var(--muted); max-width: 640px; }
+
+        .cta-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 22px;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            font-weight: 700;
+            color: var(--text);
+            transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+        }
+
+        .button:hover { transform: translateY(-3px); }
+
+        .solid {
+            background: var(--yellow);
+            color: #0b0b0b;
+            border-color: var(--yellow);
+            box-shadow: 4px 4px 0 var(--gold);
+        }
+
+        .solid:hover { box-shadow: 7px 7px 0 var(--gold); }
+
+        .frame { position: relative; justify-self: center; width: min(340px, 78vw); }
+
+        .frame::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border: 2px dashed var(--yellow);
+            border-radius: 22px;
+            transform: translate(18px, 18px);
+            opacity: 0.6;
+        }
+
+        .portrait {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 22px;
+            padding: 9px;
+            background: linear-gradient(135deg, var(--yellow), var(--gold));
+            box-shadow: 0 0 60px rgba(255, 46, 59, 0.28);
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .portrait img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            border-radius: 14px;
+            border: 5px solid var(--bg);
+            background: var(--surface);
+        }
+
+        .chip {
+            position: absolute;
+            z-index: 2;
+            background: var(--bg);
+            border: 1px solid var(--yellow);
+            color: var(--yellow);
+            padding: 8px 14px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        .chip-a { left: -26px; bottom: 34px; }
+        .chip-b { right: -18px; top: 26px; }
+
+        .ticker {
+            overflow: hidden;
+            background: var(--yellow);
+            color: #0b0b0b;
+            transform: rotate(-1.2deg);
+            margin: 20px 0 30px;
+            border-block: 3px solid #0b0b0b;
+            box-shadow: 0 0 0 1px var(--yellow);
+        }
+
+        .ticker-run {
+            display: flex;
+            width: max-content;
+            animation: scroll 28s linear infinite;
+        }
+
+        .ticker span {
+            padding: 12px 26px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        section { padding-top: 70px; padding-bottom: 70px; }
+
+        .label {
+            display: inline-block;
+            color: var(--yellow);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .heading {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(2.1rem, 4.4vw, 3rem);
+            margin: 8px 0 12px;
+        }
+
+        .lead { margin-bottom: 30px; }
+
+        .panel {
+            background: linear-gradient(145deg, #1b1b1b, #121212);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 26px;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .panel:hover {
+            transform: translateY(-5px);
+            border-color: var(--yellow);
+            box-shadow: 6px 6px 0 rgba(255, 46, 59, 0.3);
+        }
+
+        .panel p { color: var(--muted); }
+        .panel h3 { margin-bottom: 6px; }
+
+        .mosaic {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 16px;
+        }
+
+        .mosaic .big { grid-row: span 2; }
+
+        .figure strong {
+            display: block;
+            font-family: Georgia, serif;
+            font-size: 2.6rem;
+            line-height: 1.1;
+            color: var(--yellow);
+        }
+
+        .figure span { color: var(--muted); font-size: 0.88rem; }
+
+        .figure.accent { background: var(--yellow); border-color: var(--yellow); }
+        .figure.accent strong { color: #0b0b0b; }
+        .figure.accent span { color: #2a0507; font-weight: 600; }
+
+        .traits { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px; }
+
+        .traits span {
+            border: 1px solid var(--line);
+            background: rgba(255, 46, 59, 0.07);
+            color: var(--yellow);
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        .path { position: relative; display: grid; gap: 20px; padding-left: 34px; }
+
+        .path::before {
+            content: "";
+            position: absolute;
+            left: 9px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: linear-gradient(var(--yellow), rgba(255, 46, 59, 0.1));
+        }
+
+        .step { position: relative; }
+
+        .step::before {
+            content: "";
+            position: absolute;
+            left: -34px;
+            top: 26px;
+            width: 20px;
+            height: 20px;
+            border-radius: 6px;
+            background: var(--yellow);
+            border: 4px solid var(--bg);
+            box-shadow: 0 0 0 2px var(--yellow);
+        }
+
+        .period { color: var(--yellow); font-weight: 800; font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 8px; }
+        .place { color: var(--gold); font-size: 0.92rem; margin: 2px 0 10px; }
+
+        .marks {
+            display: inline-block;
+            background: var(--yellow);
+            color: #0b0b0b;
+            font-weight: 800;
+            padding: 3px 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .records { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
+        .records .panel { display: flex; align-items: center; gap: 20px; }
+
+        .records .big-mark {
+            flex: none;
+            width: 96px;
+            height: 96px;
+            display: grid;
+            place-items: center;
+            border-radius: 18px;
+            background: var(--yellow);
+            color: #0b0b0b;
+            font-family: Georgia, serif;
+            font-size: 1.55rem;
+            font-weight: 800;
+            transform: rotate(-4deg);
+        }
+
+        .hobby-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+        .hobby {
+            text-align: center;
+            padding: 30px 18px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            color: var(--muted);
+            font-weight: 600;
+            transition: transform 0.3s, background 0.3s, color 0.3s;
+        }
+
+        .hobby b { display: block; font-family: Georgia, serif; font-size: 2.3rem; color: var(--yellow); margin-bottom: 8px; transition: color 0.3s; }
+
+        .hobby:hover b { color: #0b0b0b; }
+
+        .hobby:hover { background: var(--yellow); color: #0b0b0b; transform: translateY(-6px) rotate(-1.5deg); }
+
+        .reach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+        .channels { display: grid; gap: 12px; margin-top: 16px; }
+
+        .channels a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 13px 16px;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            color: var(--text);
+            overflow-wrap: anywhere;
+            transition: background 0.25s, color 0.25s, transform 0.25s;
+        }
+
+        .channels a:hover { background: var(--yellow); color: #0b0b0b; transform: translateX(5px); }
+
+        .gap-top { margin-top: 18px; }
+
+        iframe {
+            width: 100%;
+            height: 280px;
+            border: 2px solid var(--line);
+            border-radius: var(--radius);
+            filter: grayscale(0.7) invert(0.92) hue-rotate(180deg) contrast(0.9);
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 26px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.86rem;
+        }
+
+        footer a { color: var(--yellow); font-weight: 700; }
+
+        @keyframes float { 50% { transform: translateY(-12px); } }
+        @keyframes scroll { to { transform: translateX(-50%); } }
+        @keyframes pulse {
+            70% { box-shadow: 0 0 0 10px rgba(255, 46, 59, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 46, 59, 0); }
+        }
+
+        a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
+
+        @media (max-width: 860px) {
+            .landing { grid-template-columns: 1fr; text-align: center; gap: 50px; padding-top: 50px; }
+            .bio { margin: auto; }
+            .cta-row { justify-content: center; }
+            nav { justify-content: center; border-radius: 26px; }
+            .menu { justify-content: center; }
+            .mosaic { grid-template-columns: 1fr 1fr; }
+            .mosaic .big { grid-column: 1 / -1; grid-row: auto; }
+            .reach-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            section { padding-top: 52px; padding-bottom: 52px; }
+            .mosaic, .records, .hobby-grid { grid-template-columns: 1fr; }
+            .chip-a { left: -8px; }
+            .chip-b { right: -6px; }
+            .frame::before { transform: translate(10px, 10px); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .portrait, .ticker-run, .pill i { animation: none; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="wrap" aria-label="Main navigation">
+            <a class="logo" href="#home">
+                SREESANTH<span>.</span>
+            </a>
+
+            <div class="menu">
+                <a href="#profile">Profile</a>
+                <a href="#academics">Academic Record</a>
+                <a href="#results">Results</a>
+                <a href="#hobbies">Hobbies</a>
+                <a href="#reach">Get in Touch</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="wrap landing" id="home">
+
+            <div>
+                <div class="pill"><i></i> Student · Gumuda, Odisha</div>
+
+                <h1>Hi, I'm <span class="mark">Sreesanth</span></h1>
+
+                <p class="role">Curious Learner · Music Lover · Gamer</p>
+
+                <p class="bio">
+                    I am Jhami Sreesanth from Gumuda, Odisha. I completed my
+                    Intermediate with 98.4% and I am now looking forward to the
+                    next stage of my education. I love learning new things,
+                    listening to music and playing games, and I am building a
+                    strong foundation for my future.
+                </p>
+
+                <div class="cta-row">
+                    <a class="button solid" href="#academics">See Academic Record →</a>
+                    <a class="button" href="#reach">Get in Touch</a>
+                </div>
+            </div>
+
+            <div class="frame">
+                <div class="portrait">
+                    <img src="sree.png" alt="Sreesanth profile logo">
+                </div>
+                <div class="chip chip-a">Music</div>
+                <div class="chip chip-b">Gaming</div>
+            </div>
+
+        </section>
+
+        <section class="wrap" id="academics">
+
+            <div class="label">Study record</div>
+            <h2 class="heading">Academic Record</h2>
+            <p class="lead">School and intermediate studies, in order.</p>
+
+            <div class="path">
+
+                <div class="step">
+                    <div class="period">2024 – 2026</div>
+                    <div class="panel">
+                        <h3>Intermediate</h3>
+                        <div class="place">Tirumula Junior College</div>
+                        <span class="marks">98.4%</span>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="period">2024</div>
+                    <div class="panel">
+                        <h3>10th Standard</h3>
+                        <div class="place">Aryan English Medium School</div>
+                        <span class="marks">90%</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="wrap" id="profile">
+
+            <div class="label">Profile</div>
+            <h2 class="heading">Profile Overview</h2>
+            <p class="lead">Student, music listener and gamer from Odisha.</p>
+
+            <div class="mosaic">
+
+                <div class="panel big">
+                    <h3>In short</h3>
+                    <p>
+                        I believe in <em>working hard and staying consistent</em>. I enjoy
+                        exploring new ideas and challenging myself to improve every day.
+                        My goal is to grow into a successful professional and make my
+                        family and community proud.
+                    </p>
+
+                    <div class="traits">
+                        <span>Discipline</span>
+                        <span>Focus</span>
+                        <span>Dedication</span>
+                        <span>Consistency</span>
+                    </div>
+                </div>
+
+                <div class="panel figure accent">
+                    <strong>98.4%</strong>
+                    <span>Intermediate</span>
+                </div>
+
+                <div class="panel figure">
+                    <strong>90%</strong>
+                    <span>10th standard</span>
+                </div>
+
+                <div class="panel figure" style="grid-column: span 2;">
+                    <strong>Odisha</strong>
+                    <span>Home town · Gumuda</span>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="wrap" id="results">
+
+            <div class="label">Scorecard</div>
+            <h2 class="heading">Results</h2>
+            <p class="lead">Marks scored in my board and college exams.</p>
+
+            <div class="records">
+
+                <div class="panel">
+                    <div class="big-mark">98.4%</div>
+                    <div>
+                        <h3>Intermediate</h3>
+                        <p>Tirumula Junior College · 2026</p>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="big-mark">90%</div>
+                    <div>
+                        <h3>10th Standard</h3>
+                        <p>Aryan English Medium School · 2024</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="wrap" id="hobbies">
+
+            <div class="label">Off duty</div>
+            <h2 class="heading">Hobbies</h2>
+            <p class="lead">How I spend my free time.</p>
+
+            <div class="hobby-grid">
+                <div class="hobby"><b>01</b>Listening to Music</div>
+                <div class="hobby"><b>02</b>Playing Games</div>
+                <div class="hobby"><b>03</b>Learning New Things</div>
+            </div>
+
+        </section>
+
+        <section class="wrap" id="reach">
+
+            <div class="label">Get in touch</div>
+            <h2 class="heading">Get in Touch</h2>
+            <p class="lead">Message me through any of these.</p>
+
+            <div class="reach-grid">
+
+                <div class="panel">
+                    <h3>Reach me at</h3>
+
+                    <div class="channels">
+                        <a href="mailto:jhamisree57@gmail.com">Email · jhamisree57@gmail.com</a>
+
+                        <a href="https://www.instagram.com/itz.sree07/"
+                           target="_blank" rel="noopener noreferrer">Instagram · itz.sree07</a>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h3>Write to me</h3>
+                    <p>Use the button to open an email to me directly.</p>
+
+                    <a class="button solid gap-top"
+                       href="mailto:jhamisree57@gmail.com?subject=Portfolio%20Enquiry">
+                        Email Me →
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="wrap" id="base">
+
+            <div class="label">Base</div>
+            <h2 class="heading">Where I Am From</h2>
+            <p class="lead">Gumuda, Odisha.</p>
+
+            <iframe
+                title="Map showing Gumuda, Odisha"
+                loading="lazy"
+                src="https://www.google.com/maps?q=Gumuda%2C%20Odisha&output=embed">
+            </iframe>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Jhami Sreesanth · All rights reserved.</p>
+        <p><a href="#home">Go to top ↑</a></p>
+    </footer>
+
+</body>
+</html>
